@@ -1,4 +1,4 @@
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './index.css'
 
@@ -12,7 +12,7 @@ const Header = props => {
     if (Cookies.get('jwt_token') !== undefined) {
       const {history} = props
       console.log(props)
-      history.replace('/home')
+      history.replace('/')
     }
   }
   const onClickedProducts = () => {
@@ -59,27 +59,30 @@ const Header = props => {
             alt="website logo"
           />
           <ul className="nav-menu">
-            <button
+            <Link
+              to="/"
               type="button"
               className="nav-button"
               onClick={onClickedHome}
             >
               <li className="nav-menu-item">Home</li>
-            </button>
-            <button
+            </Link>
+            <Link
+              to="/products"
               type="button"
               className="nav-button"
               onClick={onClickedProducts}
             >
               <li className="nav-menu-item">Products</li>
-            </button>
-            <button
+            </Link>
+            <Link
+              to="/cart"
               type="button"
               className="nav-button"
               onClick={onClickedCart}
             >
               <li className="nav-menu-item">Cart</li>
-            </button>
+            </Link>
           </ul>
           <button
             type="button"
@@ -92,7 +95,12 @@ const Header = props => {
       </div>
       <div className="nav-menu-mobile">
         <ul className="nav-menu-list-mobile">
-          <button type="button" className="nav-button" onClick={onClickedHome}>
+          <Link
+            to="/"
+            type="button"
+            className="nav-button"
+            onClick={onClickedHome}
+          >
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png"
@@ -100,8 +108,9 @@ const Header = props => {
                 className="nav-bar-img"
               />
             </li>
-          </button>
-          <button
+          </Link>
+          <Link
+            to="/products"
             type="button"
             className="nav-button"
             onClick={onClickedProducts}
@@ -113,8 +122,13 @@ const Header = props => {
                 className="nav-bar-img"
               />
             </li>
-          </button>
-          <button type="button" className="nav-button" onClick={onClickedCart}>
+          </Link>
+          <Link
+            to="/cart"
+            type="button"
+            className="nav-button"
+            onClick={onClickedCart}
+          >
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png"
@@ -122,7 +136,7 @@ const Header = props => {
                 className="nav-bar-img"
               />
             </li>
-          </button>
+          </Link>
         </ul>
       </div>
     </nav>
